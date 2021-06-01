@@ -1,132 +1,378 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-if (count($sliderProducts) > 0) {
-    ?>
-    <div id="home-slider" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <?php
-            $i = 0;
-            while ($i < count($sliderProducts)) {
-                ?>
-                <li data-target="#home-slider" data-slide-to="0" class="<?= $i == 0 ? 'active' : '' ?>"></li>
-                <?php
-                $i++;
-            }
-            ?>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <?php
-            $i = 0;
-            foreach ($sliderProducts as $article) {
-                ?>
-                <div class="item <?= $i == 0 ? 'active' : '' ?>" style="background-image: url('<?= base_url('attachments/shop_images/' . $article['image']) ?>')">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3>
-                                    <a href="<?= LANG_URL . '/' . $article['url'] ?>">
-                                        <?= character_limiter($article['title'], 100) ?>
-                                    </a>
-                                </h3>
-                                <div class="description">
-                                    <?= character_limiter(strip_tags($article['basic_description']), 150) ?>
-                                </div>
-                                <?php if ($hideBuyButtonsOfOutOfStock == 0 || (int)$article['quantity'] > 0) { ?>
-                                <a class="option add-to-cart" data-goto="<?= LANG_URL . '/checkout' ?>" href="javascript:void(0);" data-id="<?= $article['id'] ?>">
-                                    <?= lang('buy_now') ?>
-                                </a>
-                                <?php } ?>
-                            </div>
-                            <div class="col-sm-6">
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
+<section class="banner" id="top" style="background-image: url(<?= base_url('assets/shopping/img/homepage-banner-image-1920x700.jpg') ?>);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="banner-caption">
+                        <div class="line-dec"></div>
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                        <div class="blue-button">
+                            <a href="contact.html">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="our-services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="left-content">
+                            <br>
+                            <h4>About us</h4>
+                            <p>Aenean hendrerit metus leo, quis viverra purus condimentum nec. Pellentesque a sem semper, lobortis mauris non, varius urna. Quisque sodales purus eu tellus fringilla.<br><br>Mauris sit amet quam congue, pulvinar urna et, congue diam. Suspendisse eu lorem massa. Integer sit amet posuere tellus, id efficitur leo. In hac habitasse platea dictumst. Vel sequi odit similique repudiandae ipsum iste, quidem tenetur id impedit, eaque et, aliquam quod.</p>
+                            <div class="blue-button">
+                                <a href="about-us.html">Discover More</a>
+                            </div>
+
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="<?= base_url('assets/shopping/img/about-1-720x480.jpg') ?>" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-places">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <span>Featured Products</span>
+                            <h2>Lorem ipsum dolor sit amet ctetur.</h2>
+                        </div>
+                    </div> 
+                </div> 
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <img src="<?= base_url('assets/shopping/img/product-1-720x480.jpg') ?>" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit amet.</h4>
+
+                                <span><del><sup>$</sup>99.00 </del> <strong><sup>$</sup>79.00</strong></span>
+
+                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
+
+                                <div class="text-button">
+                                    <a href="product-details.html">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <img src="<?= base_url('assets/shopping/img/product-2-720x480.jpg') ?>" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit.</h4>
+
+                                <span><del><sup>$</sup>999.00 </del> <strong><sup>$</sup>779.00</strong></span>
+
+                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
+
+                                <div class="text-button">
+                                    <a href="product-details.html">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <img src="<?= base_url('assets/shopping/img/product-3-720x480.jpg') ?>" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit amet.</h4>
+
+                                <span><del><sup>$</sup>1999.00 </del> <strong><sup>$</sup>1779.00</strong></span>
+
+                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
+
+                                <div class="text-button">
+                                    <a href="product-details.html">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <img src="<?= base_url('assets/shopping/img/product-4-720x480.jpg') ?>" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit amet.</h4>
+
+                                <span><del><sup>$</sup>99.00 </del> <strong><sup>$</sup>79.00</strong></span>
+
+                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
+
+                                <div class="text-button">
+                                    <a href="product-details.html">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <img src="<?= base_url('assets/shopping/img/product-5-720x480.jpg') ?>" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit.</h4>
+
+                                <span><del><sup>$</sup>999.00 </del> <strong><sup>$</sup>779.00</strong></span>
+
+                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
+
+                                <div class="text-button">
+                                    <a href="product-details.html">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <img src="<?= base_url('assets/shopping/img/product-6-720x480.jpg') ?>" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit amet.</h4>
+
+                                <span><del><sup>$</sup>1999.00 </del> <strong><sup>$</sup>1779.00</strong></span>
+
+                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
+
+                                <div class="text-button">
+                                    <a href="product-details.html">View More</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
-                $i++;
-            }
-            ?>
-        </div>
-        <a class="left carousel-control" href="#home-slider" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#home-slider" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div>
-<?php } ?>
-<div class="home-banners">
-    <div class="single-banner pull-left">
-        <a href="#"><img src="<?= base_url('attachments/banners/1.jpg') ?>" alt="" /></a>
-    </div>
-    <div class="single-banner pull-right">
-        <a href="#"><img src="<?= base_url('attachments/banners/2.jpg') ?>" alt="" /></a>
-    </div>
-    <div class="clearfix"></div>
-</div>
-<div class="new-products">
-    <div class="container">
-        <h3><?= lang('new_products') ?></h3> 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="carousel slide multi-item-carousel home-carousel" id="theCarousel">
-                    <div class="carousel-inner">
-                        <?php
-                        $i = 0;
-                        foreach ($newProducts as $product) {
-                            ?>
-                            <div class="item <?= $i == 0 ? 'active' : '' ?>">
-                                <div class="col-xs-12 col-sm-4">
-                                    <a href="<?= LANG_URL . '/' . $product['url'] ?>">
-                                        <img src="<?= base_url('attachments/shop_images/' . $product['image']) ?>" class="img-responsive">
-                                        <h1><?= $product['title'] ?></h1>
-                                        <span class="price"><?= $product['price'] ?> &#8377;</span>
-                                    </a>
-                                    <a class="add-to-cart"  href="<?= LANG_URL . '/' . $product['url'] ?>">
-                                        <?= lang('add_to_cart') ?>
-                                    </a>
+            </div>
+        </section>
+
+        <section class="featured-places">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <span>Latest blog posts</span>
+                            <h2>Lorem ipsum dolor sit amet ctetur.</h2>
+                        </div>
+                    </div> 
+                </div> 
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <div class="thumb-img">
+                                    <img src="<?= base_url('assets/shopping/img/blog-1-720x480.jpg') ?>" alt="">
+                                </div>
+
+                                <div class="overlay-content">
+                                 <strong title="Author"><i class="fa fa-user"></i> John Doe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <strong title="Posted on"><i class="fa fa-calendar"></i> 12/06/2020 10:30</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <strong title="Views"><i class="fa fa-map-marker"></i> 115</strong>
                                 </div>
                             </div>
-                            <?php
-                            $i++;
-                        }
-                        ?>
-                    </div>
-                    <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                    <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="blog-posts">
-    <div class="container">
-        <h3><?= lang('blog_posts') ?></h3> 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="carousel slide multi-item-carousel" id="theCarousel1">
-                    <div class="carousel-inner">
-                        <?php
-                        $i = 0;
-                        foreach ($lastBlogs as $post) {
-                            ?>
-                            <div class="item <?= $i == 0 ? 'active' : '' ?>">
-                                <div class="col-xs-12 col-sm-4">
-                                    <a href="<?= LANG_URL . '/blog/' . $post['url'] ?>">
-                                        <img src="<?= base_url('attachments/blog_images/' . $post['image']) ?>" class="img-responsive">
-                                        <span class="time"><?= date('M d, Y', $post['time']) ?></span>
-                                        <h1><?= character_limiter($post['title'], 85) ?></h1>
-                                        <p class="description"><?= character_limiter(strip_tags($post['description']), 300) ?></p>
-                                        <span class="read-more"><?= lang('read_more') ?> <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-                                    </a> 
+
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</h4>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim consectetur assumenda nam facere voluptatibus totam veritatis. </p>
+
+                                <div class="text-button">
+                                    <a href="blog-details.html">Read More</a>
                                 </div>
                             </div>
-                            <?php
-                            $i++;
-                        }
-                        ?>
+                        </div>
                     </div>
-                    <a class="left carousel-control" href="#theCarousel1" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                    <a class="right carousel-control" href="#theCarousel1" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <div class="thumb-img">
+                                    <img src="<?= base_url('assets/shopping/img/blog-2-720x480.jpg') ?>" alt="">
+                                </div>
+
+                                <div class="overlay-content">
+                                 <strong title="Author"><i class="fa fa-user"></i> John Doe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <strong title="Posted on"><i class="fa fa-calendar"></i> 12/06/2020 10:30</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <strong title="Views"><i class="fa fa-map-marker"></i> 115</strong>
+                                </div>
+                            </div>
+
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</h4>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim consectetur assumenda nam facere voluptatibus totam veritatis. </p>
+
+                                <div class="text-button">
+                                    <a href="blog-details.html">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-item">
+                            <div class="thumb">
+                                <div class="thumb-img">
+                                    <img src="<?= base_url('assets/shopping/img/blog-3-720x480.jpg') ?>" alt="">
+                                </div>
+
+                                <div class="overlay-content">
+                                 <strong title="Author"><i class="fa fa-user"></i> John Doe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <strong title="Posted on"><i class="fa fa-calendar"></i> 12/06/2020 10:30</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                 <strong title="Views"><i class="fa fa-map-marker"></i> 115</strong>
+                                </div>
+                            </div>
+
+                            <div class="down-content">
+                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</h4>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim consectetur assumenda nam facere voluptatibus totam veritatis. </p>
+
+                                <div class="text-button">
+                                    <a href="blog-details.html">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </section>
+
+        <section id="video-container">
+            <div class="video-overlay"></div>
+            <div class="video-content">
+                <div class="inner">
+                      <div class="section-heading">
+                          <span>Contact Us</span>
+                          <h2>Vivamus nec vehicula felis</h2>
+                      </div>
+                      <!-- Modal button -->
+
+                      <div class="blue-button">
+                        <a href="contact.html">Talk to us</a>
+                      </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="popular-places" id="popular">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <span>Testimonials</span>
+                            <h2>Lorem ipsum dolor sit amet</h2>
+                        </div>
+                    </div> 
+                </div> 
+
+                <div class="owl-carousel owl-theme">
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="<?= base_url('assets/shopping/img/popular_item_1.jpg') ?>" alt="">
+                            <div class="text-content">
+                                <h4>John Doe</h4>
+                                <span>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</span>
+                            </div>
+                            <div class="plus-button">
+                                <a href="testimonials.html"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="<?= base_url('assets/shopping/img/popular_item_2.jpg') ?>" alt="">
+                            <div class="text-content">
+                                <h4>John Doe</h4>
+                                <span>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</span>
+                            </div>
+                            <div class="plus-button">
+                                <a href="testimonials.html"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="<?= base_url('assets/shopping/img/popular_item_3.jpg') ?>" alt="">
+                            <div class="text-content">
+                                <h4>John Doe</h4>
+                                <span>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</span>
+                            </div>
+                            <div class="plus-button">
+                                <a href="testimonials.html"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="<?= base_url('assets/shopping/img/popular_item_4.jpg') ?>" alt="">
+                            <div class="text-content">
+                                <h4>John Doe</h4>
+                                <span>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</span>
+                            </div>
+                            <div class="plus-button">
+                                <a href="testimonials.html"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="<?= base_url('assets/shopping/img/popular_item_5.jpg') ?>" alt="">
+                            <div class="text-content">
+                                <h4>John Doe</h4>
+                                <span>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</span>
+                            </div>
+                            <div class="plus-button">
+                                <a href="testimonials.html"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="<?= base_url('assets/shopping/img/popular_item_1.jpg') ?>" alt="">
+                            <div class="text-content">
+                                <h4>John Doe</h4>
+                                <span>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</span>
+                            </div>
+                            <div class="plus-button">
+                                <a href="testimonials.html"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="<?= base_url('assets/shopping/img/popular_item_2.jpg') ?>" alt="">
+                            <div class="text-content">
+                                <h4>John Doe</h4>
+                                <span>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</span>
+                            </div>
+                            <div class="plus-button">
+                                <a href="testimonials.html"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>

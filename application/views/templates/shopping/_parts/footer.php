@@ -1,130 +1,71 @@
 <footer>
-    <div class="footer" id="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6 f-col">
-                    <h3><?= lang('about_us') ?></h3>
-                    <p><?= $footerAboutUs ?></p>
-                </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6 f-col">
-                    <h3><?= lang('pages') ?></h3>
-                    <ul>
-                        <li><a href="<?= base_url() ?>">» <?= lang('home') ?> </a></li>
-                        <li><a href="<?= LANG_URL . '/checkout' ?>">» <?= lang('checkout') ?> </a></li>
-                        <li><a href="<?= LANG_URL . '/contacts' ?>">» <?= lang('contacts') ?> </a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6 f-col">
-                    <h3><?= lang('categories') ?></h3>
-                    <?php if (!empty($footerCategories)) { ?>
-                        <ul>
-                            <?php foreach ($footerCategories as $key => $categorie) { ?>
-                                <li><a href="javascript:void(0);" data-categorie-id="<?= $key ?>" class="go-category"><?= $categorie ?></a></li>
-                            <?php } ?>
+                <div class="col-md-5">
+                    <div class="about-veno">
+                        <div class="logo">
+                            <img src="<?= base_url('assets/shopping/img/footer_logo.png') ?>" alt="Venue Logo">
+                        </div>
+                        <p>Mauris sit amet quam congue, pulvinar urna et, congue diam. Suspendisse eu lorem massa. Integer sit amet posuere tellustea dictumst.</p>
+                        <ul class="social-icons">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
                         </ul>
-                    <?php } else { ?>
-                        <p><?= lang('no_categories') ?></p>
-                    <?php } ?>
+                    </div>
                 </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6 f-col">
-                    <h3><?= lang('contacts') ?></h3>
-                    <ul class="footer-icon">
-                        <?php if ($footerContactAddr != '') { ?>
-                            <li>
-                                <span class="pull-left"><i class="fa fa-map-marker"></i></span> 
-                                <span class="pull-left f-cont-info"> <?= $footerContactAddr ?></span> 
-                            </li>
-                        <?php }if ($footerContactPhone != '') { ?>
-                            <li>
-                                <span class="pull-left"><i class="fa fa-phone"></i></span> 
-                                <span class="pull-left f-cont-info"> <?= $footerContactPhone ?></span> 
-                            </li>
-                        <?php } if ($footerContactEmail != '') { ?>
-                            <li>
-                                <span class="pull-left"><i class="fa fa-envelope"></i></span> 
-                                <span class="pull-left f-cont-info"><a href="mailto:<?= $footerContactEmail ?>"><?= $footerContactEmail ?></a></span>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 f-col">
-                    <h3><?= lang('newsletter') ?></h3>
-                    <ul>
-                        <li>
-                            <div class="input-append newsletter-box text-center">
-                                <form method="POST" id="subscribeForm">
-                                    <input type="text" class="full text-center" name="subscribeEmail" placeholder="<?= lang('email_address') ?>">
-                                    <button class="btn bg-gray" onclick="checkEmailField()" type="button"> <?= lang('subscribe') ?> <i class="fa fa-long-arrow-right"></i></button>
-                                </form>
+                <div class="col-md-4">
+                    <div class="useful-links">
+                        <div class="footer-heading">
+                            <h4>Useful Links</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><a href="inde.html"><i class="fa fa-stop"></i>Home</a></li>
+                                    <li><a href="about.html"><i class="fa fa-stop"></i>About</a></li>
+                                    <li><a href="contact.html"><i class="fa fa-stop"></i>Contact Us</a></li>
+                                </ul>
                             </div>
-                        </li>
-                    </ul>
-                    <ul class="social">
-                        <?php if ($footerSocialFacebook != '') { ?>
-                            <li> <a href="<?= $footerSocialFacebook ?>"><i class=" fa fa-facebook"></i></a></li>
-                        <?php } if ($footerSocialTwitter != '') { ?>
-                            <li> <a href="<?= $footerSocialTwitter ?>"><i class="fa fa-twitter"></i></a></li>
-                        <?php } if ($footerSocialGooglePlus != '') { ?>
-                            <li> <a href="<?= $footerSocialGooglePlus ?>"><i class="fa fa-google-plus"></i></a></li>
-                        <?php } if ($footerSocialPinterest != '') { ?>
-                            <li> <a href="<?= $footerSocialPinterest ?>"><i class="fa fa-pinterest"></i></a></li>
-                        <?php } if ($footerSocialYoutube != '') { ?>
-                            <li> <a href="<?= $footerSocialYoutube ?>"><i class="fa fa-youtube"></i></a></li>
-                        <?php } ?>
-                    </ul>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><a href="products.html"><i class="fa fa-stop"></i>Products</a></li>
+                                    <li><a href="testimonials.html"><i class="fa fa-stop"></i>Testimonials</a></li>
+                                    <li><a href="blog.html"><i class="fa fa-stop"></i>Blog</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div> 
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container">
-            <p class="pull-left"><?= $footercopyright ?></p>
-            <div class="pull-right">
-                <ul class="nav nav-pills payments">
-                    <li><i class="fa fa-cc-visa"></i></li>
-                    <li><i class="fa fa-cc-mastercard"></i></li>
-                    <li><i class="fa fa-cc-amex"></i></li>
-                    <li><i class="fa fa-cc-paypal"></i></li>
-                </ul> 
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="footer-heading">
+                            <h4>Contact Information</h4>
+                        </div>
+                        <p><i class="fa fa-map-marker"></i> 212 Barrington Court New York, ABC</p>
+                        <ul>
+                            <li><span>Phone:</span><a href="#">+1 333 4040 5566</a></li>
+                            <li><span>Email:</span><a href="#">contact@company.com</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+    </footer>
+
+    <div class="sub-footer">
+        <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
     </div>
-</footer>
-<?php if ($this->session->flashdata('emailAdded')) { ?>
-<script>
-    $(document).ready(function () {
-        ShowNotificator('alert-info', '<?= lang('email_added') ?>');
-    });
-</script>
-    <?php
-}
-echo $addJs;
-if ($this->session->flashdata('userError')) {
-    if (is_array($this->session->flashdata('userError'))) {
-        $usr_err = implode(' ', $this->session->flashdata('userError'));
-    } else {
-        $usr_err = $this->session->flashdata('userError');
-    }
-    ?>
-    <script>
-        $(document).ready(function () {
-            ShowNotificator('alert-danger', '<?= $usr_err ?>');
-        });
-    </script>
-    <?php
-}
-?>
-<div id="notificator" class="alert"></div>
-<script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
-<script src="<?= base_url('assets/js/placeholders.min.js') ?>"></script>
-<script>
-var variable = {
-    clearShoppingCartUrl: "<?= base_url('clearShoppingCart') ?>",
-    manageShoppingCartUrl: "<?= base_url('manageShoppingCart') ?>",
-    discountCodeChecker: "<?= base_url('discountCodeChecker') ?>"
-};
-</script>
-<script src="<?= base_url('assets/js/system.js') ?>"></script>
-<script src="<?= base_url('templatejs/mine.js') ?>"></script>
+    <?= base_url('assets/shopping/css/style.css') ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+    <script>window.jQuery || document.write('<script src="<?= base_url('assets/shopping/js/vendor/jquery-1.11.2.min.js') ?>"><\/script>')</script>
+
+    <script src="<?= base_url('assets/shopping/js/vendor/bootstrap.min.js') ?>"></script>
+    
+    <script src="<?= base_url('assets/shopping/js/datepicker.js') ?>"></script>
+    <script src="<?= base_url('assets/shopping/js/plugins.js') ?>"></script>
+    <script src="<?= base_url('assets/shopping/js/main.js') ?>"></script>
 </body>
 </html>
