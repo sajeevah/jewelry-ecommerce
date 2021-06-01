@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<?= MY_LANGUAGE_ABBR ?>">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,6 +18,12 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
         <script src="<?= base_url('assets/shopping/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') ?>"></script>
+        <?php if ($cookieLaw != false) { ?>
+            <script type="text/javascript">
+                window.cookieconsent_options = {"message": "<?= $cookieLaw['message'] ?>", "dismiss": "<?= $cookieLaw['button_text'] ?>", "learnMore": "<?= $cookieLaw['learn_more'] ?>", "link": "<?= $cookieLaw['link'] ?>", "theme": "<?= $cookieLaw['theme'] ?>"};
+            </script>
+            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
+        <?php } ?>
     </head>
 
 <body>
@@ -35,7 +41,8 @@
                             <ul class="dropdown menu">
                                 <li class='active'><a href="index.html">Home</a></li>
 
-                                <li><a href="products.html">Products</a></li>
+                                <!-- <li><a href="products.html">Products</a></li> -->
+                                <li<?= uri_string() == 'shop' || uri_string() == MY_LANGUAGE_ABBR . '/shop' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/shop' ?>"><?= lang('products') ?></a></li>
 
                                 <li><a href="checkout.html">Checkout</a></li>
 
