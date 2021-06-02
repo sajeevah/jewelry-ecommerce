@@ -1,11 +1,18 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
-<div class="inner-nav">
+<section class="banner banner-secondary" id="top" style="background-image: url(<?= base_url('assets/shopping/img/banner-image-1-1920x300.jpg') ?>);">
     <div class="container">
-        <?= lang('home') ?> <span class="active"> > <?= lang('shop') ?></span>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="banner-caption">
+                    <div class="line-dec"></div>
+                    <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 <div class="container" id="view-product">
     <div class="row top-part">
         <div class="col-sm-4">
@@ -15,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php
             if ($product['folder'] != null) {
                 $dir = "attachments/shop_images/" . $product['folder'] . '/';
-                ?>
+            ?>
                 <div class="row">
                     <?php
                     if (is_dir($dir)) {
@@ -23,11 +30,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $i = 1;
                             while (($file = readdir($dh)) !== false) {
                                 if (is_file($dir . $file)) {
-                                    ?>
+                    ?>
                                     <div class="col-xs-4 col-sm-6 col-md-4 text-center">
                                         <img src="<?= base_url($dir . $file) ?>" data-num="<?= $i ?>" class="other-img-preview img-sl img-thumbnail the-image" alt="<?= str_replace('"', "'", $product['title']) ?>">
                                     </div>
-                                    <?php
+                    <?php
                                     $i++;
                                 }
                             }
@@ -36,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     ?>
                 </div>
-                <?php
+            <?php
             }
             ?>
         </div>
@@ -54,7 +61,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-6"><?= $product['old_price'] . CURRENCY ?></div>
                         <div class="col-sm-12 border-bottom"></div>
                     </div>
-                <?php } if ($publicQuantity == 1) { ?>
+                <?php }
+                if ($publicQuantity == 1) { ?>
                     <div class="row row-info">
                         <div class="col-sm-6">
                             <b><?= lang('in_stock') ?>:</b>
@@ -66,12 +74,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row row-info">
                     <div class="col-sm-6"><b><?= lang('num_added_to_cart') ?>:</b></div>
                     <div class="col-sm-6"><?php
-                        @$result = array_count_values($_SESSION['shopping_cart']);
-                        if (isset($result[$product['id']]))
-                            echo $result[$product['id']];
-                        else
-                            echo 0;
-                        ?></div>
+                                            @$result = array_count_values($_SESSION['shopping_cart']);
+                                            if (isset($result[$product['id']]))
+                                                echo $result[$product['id']];
+                                            else
+                                                echo 0;
+                                            ?></div>
                     <div class="col-sm-12 border-bottom"></div>
                 </div>
                 <?php if ($publicDateAdded == 1) { ?>
@@ -109,10 +117,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php } ?>
                     </div>
                     <div class="col-sm-12 border-bottom"></div>
-                </div> 
+                </div>
             </div>
         </div>
-    </div> 
+    </div>
     <div id="description">
         <div class="header">
             <span class="title"><?= lang('description') ?></span>
@@ -124,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php
         if (!empty($sameCagegoryProducts)) {
             foreach ($sameCagegoryProducts as $prod) {
-                ?>
+        ?>
                 <div class="col-sm-6 col-md-4 product-inner">
                     <a href="<?= LANG_URL . '/' . $prod['url'] ?>">
                         <img src="<?= base_url('attachments/shop_images/' . $prod['image']) ?>" alt="" class="img-responsive">
@@ -135,14 +143,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?= lang('add_to_cart') ?>
                     </a>
                 </div>
-                <?php
+            <?php
             }
         } else {
             ?>
             <div class="alert alert-info"><?= lang('no_same_category_products') ?></div>
-            <?php
+        <?php
         }
-        ?> 
+        ?>
     </div>
     <div id="modalImagePreview" class="modal">
         <div class="image-preview-container">
