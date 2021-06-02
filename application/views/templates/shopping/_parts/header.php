@@ -39,12 +39,14 @@
                         </div></a>
                         <nav id="primary-nav" class="dropdown cf">
                             <ul class="dropdown menu">
-                                <li class='active'><a href="index.html">Home</a></li>
+                                <!-- <li class='active'><a href="index.html">Home</a></li> -->
+                                <li<?= uri_string() == '' || uri_string() == MY_LANGUAGE_ABBR ? ' class="active"' : '' ?>><a href="<?= LANG_URL ?>"><?= lang('home') ?></a></li>
 
                                 <!-- <li><a href="products.html">Products</a></li> -->
                                 <li<?= uri_string() == 'shop' || uri_string() == MY_LANGUAGE_ABBR . '/shop' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/shop' ?>"><?= lang('products') ?></a></li>
 
-                                <li><a href="checkout.html">Checkout</a></li>
+                                <!-- <li><a href="checkout.html">Checkout</a></li> -->
+                                <li<?= uri_string() == 'checkout' || uri_string() == MY_LANGUAGE_ABBR . '/checkout' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/checkout' ?>"><?= lang('checkout') ?></a></li>
 
                                 <li>
                                     <a href="#">About</a>
