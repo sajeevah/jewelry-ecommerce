@@ -1,19 +1,26 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
-<div class="inner-nav">
+<section class="banner banner-secondary" id="top" style="background-image: url(<?= base_url('assets/shopping/img/banner-image-1-1920x300.jpg') ?>);">
     <div class="container">
-        <?= lang('home') ?> <span class="active"> > <?= lang('shopping_cart') ?></span>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="banner-caption">
+                    <div class="line-dec"></div>
+                    <h2>Checkout</h2>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="container" id="shopping-cart">
+</section>
+<div class="container" id="shopping-cart" style="margin-top: 20px;">
     <?php
     if ($cartItems['array'] == null) {
-        ?>
+    ?>
         <div class="alert alert-info"><?= lang('no_products_in_cart') ?></div>
-        <?php
+    <?php
     } else {
-        ?>
+    ?>
         <div class="table-responsive">
             <table class="table table-bordered table-products">
                 <thead>
@@ -63,16 +70,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?= lang('back_to_shop') ?>
         </a>
         <a class="btn btn-black pull-right go-checkout" href="<?= LANG_URL . '/checkout' ?>">
-            <?= lang('checkout') ?> 
+            <?= lang('checkout') ?>
         </a>
         <div class="clearfix"></div>
     <?php } ?>
 </div>
 <?php
 if ($this->session->flashdata('deleted')) {
-    ?>
+?>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             ShowNotificator('alert-info', '<?= $this->session->flashdata('deleted') ?>');
         });
     </script>

@@ -8,6 +8,12 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet" />
+        <link href="<?= base_url('assets/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" />  
+        <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
+        <script src="<?= base_url('loadlanguage/all.js') ?>"></script>
+
         <link rel="stylesheet" href="<?= base_url('assets/shopping/css/bootstrap.min.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/shopping/css/bootstrap-theme.min.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/shopping/css/fontAwesome.css') ?>">
@@ -47,6 +53,8 @@
 
                                 <!-- <li><a href="checkout.html">Checkout</a></li> -->
                                 <li<?= uri_string() == 'checkout' || uri_string() == MY_LANGUAGE_ABBR . '/checkout' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/checkout' ?>"><?= lang('checkout') ?></a></li>
+
+                                <li<?= uri_string() == 'shopping-cart' || uri_string() == MY_LANGUAGE_ABBR . '/shopping-cart' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/shopping-cart' ?>"><?= lang('shopping_cart') ?></a></li>
 
                                 <li>
                                     <a href="#">About</a>
