@@ -101,6 +101,10 @@ $route['(\w{2})/shop'] = "home/shop";
 $route['about-us'] = "AboutUs";
 $route['(\w{2})/shop'] = "AboutUs";
 
+// terms page (shopping template)
+$route['terms'] = "Terms";
+$route['(\w{2})/terms'] = "Terms";
+
 // Textual Pages links
 $route['page/(:any)'] = "page/index/$1";
 $route['(\w{2})/page/(:any)'] = "page/index/$2";
