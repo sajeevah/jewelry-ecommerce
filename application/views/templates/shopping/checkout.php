@@ -1,218 +1,178 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <section class="banner banner-secondary" id="top" style="background-image: url(<?= base_url('assets/shopping/img/banner-image-1-1920x300.jpg') ?>);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-10 col-md-offset-1">
                     <div class="banner-caption">
-                        <div class="line-dec"></div>
-                        <h2>Checkout</h2>
+                         <div class="line-dec"></div>
+                         <h2>Checkout</h2>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+<div class="container" id="checkout-page" style="margin-top: 20px;">
+    <?php
+    if ($cartItems['array'] != null) {
+        ?> 
+        <form method="POST" id="goOrder">
+            <div class="row">
+                <div class="col-sm-6 left-side">
+                    <h4><?= lang('billing_details') ?></h4>
+                    <div class="title alone">
+                        <span><?= lang('checkout') ?></span>
+                    </div>
+                    <?php
+                    if ($this->session->flashdata('submit_error')) {
+                        ?>
+                        <hr>
+                        <div class="alert alert-danger">
+                            <h4><span class="glyphicon glyphicon-alert"></span> <?= lang('finded_errors') ?></h4>
+                            <?php
+                            foreach ($this->session->flashdata('submit_error') as $error) {
+                                echo $error . '<br>';
+                            }
+                            ?>
+                        </div>
+                        <hr>
+                        <?php
+                    }
+                    ?>
+                    <div class="payment-type-box">
+                        <select class="selectpicker payment-type" data-style="btn-green" name="payment_type">
+                            <?php if ($cashondelivery_visibility == 1) { ?>
+                                <option value="cashOnDelivery"><?= lang('cash_on_delivery') ?> </option>
+                            <?php } if (filter_var($paypal_email, FILTER_VALIDATE_EMAIL)) { ?>
+                                <option value="PayPal"><?= lang('paypal') ?> </option>
+                            <?php } if ($bank_account['iban'] != null) { ?>
+                                <option value="Bank"><?= lang('bank_payment') ?> </option>
+                            <?php } ?>
+                        </select>
+                        <span class="top-header text-center"><?= lang('choose_payment') ?></span>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="firstNameInput"><?= lang('first_name') ?> (<sup><?= lang('requires') ?></sup>)</label>
+                            <input id="firstNameInput" class="form-control" name="first_name" value="<?= @$_POST['first_name'] ?>" type="text" placeholder="<?= lang('first_name') ?>">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="lastNameInput"><?= lang('last_name') ?> (<sup><?= lang('requires') ?></sup>)</label>
+                            <input id="lastNameInput" class="form-control" name="last_name" value="<?= @$_POST['last_name'] ?>" type="text" placeholder="<?= lang('last_name') ?>">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="emailAddressInput"><?= lang('email_address') ?> (<sup><?= lang('requires') ?></sup>)</label>
+                            <input id="emailAddressInput" class="form-control" name="email" value="<?= @$_POST['email'] ?>" type="text" placeholder="<?= lang('email_address') ?>">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="phoneInput"><?= lang('phone') ?> (<sup><?= lang('requires') ?></sup>)</label>
+                            <input id="phoneInput" class="form-control" name="phone" value="<?= @$_POST['phone'] ?>" type="text" placeholder="<?= lang('phone') ?>">
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="addressInput"><?= lang('address') ?> (<sup><?= lang('requires') ?></sup>)</label>
+                            <textarea id="addressInput" name="address" class="form-control" rows="3"><?= @$_POST['address'] ?></textarea>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="cityInput"><?= lang('city') ?> (<sup><?= lang('requires') ?></sup>)</label>
+                            <input id="cityInput" class="form-control" name="city" value="<?= @$_POST['city'] ?>" type="text" placeholder="<?= lang('city') ?>">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="postInput"><?= lang('post_code') ?></label>
+                            <input id="postInput" class="form-control" name="post_code" value="<?= @$_POST['post_code'] ?>" type="text" placeholder="<?= lang('post_code') ?>">
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="notesInput"><?= lang('notes') ?></label>
+                            <textarea id="notesInput" class="form-control" name="notes" rows="3"><?= @$_POST['notes'] ?></textarea>
+                        </div>
+                    </div>
+                    <?php if ($codeDiscounts == 1) { ?>
+                        <div class="discount">
+                            <label><?= lang('discount_code') ?></label>
+                            <input class="form-control" name="discountCode" value="<?= @$_POST['discountCode'] ?>" placeholder="<?= lang('enter_discount_code') ?>" type="text">
+                            <a href="javascript:void(0);" class="btn btn-default" onclick="checkDiscountCode()"><?= lang('check_code') ?></a>
+                        </div>
+                    <?php } ?>
+                    <div>
+                        <a href="javascript:void(0);" class="btn go-order" onclick="document.getElementById('goOrder').submit();" class="pull-left">
+                            <?= lang('custom_order') ?> 
+                        </a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h4><?= lang('your_order') ?></h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-products">
+                            <thead>
+                                <tr>
+                                    <th><?= lang('product') ?></th>
+                                    <th><?= lang('title') ?></th>
+                                    <th><?= lang('quantity') ?></th>
+                                    <th><?= lang('price') ?></th>
+                                    <th><?= lang('total') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($cartItems['array'] as $item) { ?>
+                                    <tr>
+                                        <td class="relative">
+                                            <input type="hidden" name="id[]" value="<?= $item['id'] ?>">
+                                            <input type="hidden" name="quantity[]" value="<?= $item['num_added'] ?>">
+                                            <img class="product-image" src="<?= base_url('/attachments/shop_images/' . $item['image']) ?>" alt="">
+                                            <a href="<?= base_url('home/removeFromCart?delete-product=' . $item['id'] . '&back-to=checkout') ?>" class="btn btn-xs btn-danger remove-product">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </a>
+                                        </td>
+                                        <td><a href="<?= LANG_URL . '/' . $item['url'] ?>"><?= $item['title'] ?></a></td>
+                                        <td>
+                                            <a class="btn btn-xs btn-primary refresh-me add-to-cart <?= $item['quantity'] <= $item['num_added'] ? 'disabled' : '' ?>" data-id="<?= $item['id'] ?>" href="javascript:void(0);">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </a>
+                                            <span class="quantity-num">
+                                                <?= $item['num_added'] ?>
+                                            </span>
+                                            <a class="btn  btn-xs btn-danger" onclick="removeProduct(<?= $item['id'] ?>, true)" href="javascript:void(0);">
+                                                <span class="glyphicon glyphicon-minus"></span>
+                                            </a>
+                                        </td>
+                                        <td><?= $item['price'] . CURRENCY ?></td>
+                                        <td><?= $item['sum_price'] . CURRENCY ?></td>
+                                    </tr>
+                                <?php } ?>
+                                <tr>
+                                    <td colspan="4" class="text-right"><?= lang('total') ?></td>
+                                    <td>
+                                        <span class="final-amount"><?= $cartItems['finalSum'] ?></span><?= CURRENCY ?>
+                                        <input type="hidden" class="final-amount" name="final_amount" value="<?= $cartItems['finalSum'] ?>">
+                                        <input type="hidden" name="amount_currency" value="<?= CURRENCY ?>">
+                                        <input type="hidden" name="discountAmount" value="">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <main>
-        <section class="featured-places">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-5 pull-right">
-                        <ul class="list-group">
-                          <li class="list-group-item">
-                            <div class="row">
-                                  <div class="col-xs-6">
-                                       <em>Sub-total</em>
-                                  </div>
-                                  
-                                  <div class="col-xs-6 text-right">
-                                       <strong>$ 128.00</strong>
-                                  </div>
-                             </div>
-                          </li>
-                          
-                          <li class="list-group-item">
-                               <div class="row">
-                                    <div class="col-xs-6">
-                                         <em>Extra</em>
-                                    </div>
-
-                                    <div class="col-xs-6 text-right">
-                                         <strong>$ 0.00</strong>
-                                    </div>
-                               </div>
-                          </li>
-
-                          <li class="list-group-item">
-                               <div class="row">
-                                    <div class="col-xs-6">
-                                         <em>Tax</em>
-                                    </div>
-
-                                    <div class="col-xs-6 text-right">
-                                         <strong>$ 10.00</strong>
-                                    </div>
-                               </div>
-                          </li>
-
-                          <li class="list-group-item">
-                               <div class="row">
-                                    <div class="col-xs-6">
-                                         <em>Total</em>
-                                    </div>
-
-                                    <div class="col-xs-6 text-right">
-                                         <strong>$ 138.00</strong>
-                                    </div>
-                               </div>
-                          </li>
-
-                          <li class="list-group-item">
-                               <div class="row">
-                                    <div class="col-xs-6">
-                                         <em>Deposit</em>
-                                    </div>
-
-                                    <div class="col-xs-6 text-right">
-                                         <strong>$ 20.00</strong>
-                                    </div>
-                               </div>
-                          </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-8 col-md-7">
-                        <form action="#">
-                           <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Title:</label>
-                                          <select class="form-control" data-msg-required="This field is required.">
-                                               <option value="">-- Choose --</option>
-                                               <option value="dr">Dr.</option>
-                                               <option value="miss">Miss</option>
-                                               <option value="mr">Mr.</option>
-                                               <option value="mrs">Mrs.</option>
-                                               <option value="ms">Ms.</option>
-                                               <option value="other">Other</option>
-                                               <option value="prof">Prof.</option>
-                                               <option value="rev">Rev.</option>
-                                          </select>
-                                     </div>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Name:</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                           </div>
-                           <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Email:</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Phone:</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                           </div>
-                           <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Address 1:</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Address 2:</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                           </div>
-                           <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">City:</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">State:</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                           </div>
-                           <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Zip:</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Country:</label>
-                                          <select class="form-control">
-                                               <option value="">-- Choose --</option>
-                                               <option value="">-- Choose --</option>
-                                               <option value="">-- Choose --</option>
-                                               <option value="">-- Choose --</option>
-                                          </select>
-                                     </div>
-                                </div>
-                           </div>
-
-                           <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Payment method</label>
-
-                                          <select class="form-control">
-                                               <option value="">-- Choose --</option>
-                                               <option value="bank">Bank account</option>
-                                               <option value="cash">Cash</option>
-                                               <option value="paypal">PayPal</option>
-                                          </select>
-                                     </div>
-                                </div>
-
-                                <div class="col-sm-6 col-xs-12">
-                                     <div class="form-group">
-                                          <label class="control-label">Captcha</label>
-                                          <input type="text" class="form-control">
-                                     </div>
-                                </div>
-                           </div>
-
-                           <div class="form-group">
-                                <label class="control-label">
-                                     <input type="checkbox">
-
-                                     I agree with the <a href="terms.html" target="_blank">Terms &amp; Conditions</a>
-                                </label>
-                           </div>
-
-                           <div class="clearfix">
-                                <div class="blue-button pull-left">
-                                    <a href="#">Back</a>
-                                </div>
-
-                                <div class="blue-button pull-right">
-                                    <a href="#">Finish</a>
-                                </div>
-                           </div>
-                        </form>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-    </main>
+        </form>
+    </div>
+<?php } else { ?>
+    <div class="alert alert-info"><?= lang('no_products_in_cart') ?></div>
+    <?php
+}
+if ($this->session->flashdata('deleted')) {
+    ?>
+    <script>
+        $(document).ready(function () {
+            ShowNotificator('alert-info', '<?= $this->session->flashdata('deleted') ?>');
+        });
+    </script>
+<?php } if ($codeDiscounts == 1 && isset($_POST['discountCode'])) { ?>
+    <script>
+        $(document).ready(function () {
+            checkDiscountCode();
+        });
+    </script>
+<?php } ?>
+</div>

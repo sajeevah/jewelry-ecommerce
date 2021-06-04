@@ -58,7 +58,6 @@
     <div class="sub-footer">
         <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
     </div>
-    <?= base_url('assets/shopping/css/style.css') ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
     <script>window.jQuery || document.write('<script src="<?= base_url('assets/shopping/js/vendor/jquery-1.11.2.min.js') ?>"><\/script>')</script>
 
