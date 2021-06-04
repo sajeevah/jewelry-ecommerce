@@ -59,9 +59,10 @@
                                 <li>
                                     <a href="#">About</a>
                                     <ul class="sub-menu">
-                                        <li><a href="about-us.html">About Us</a></li>
+                                        <li<?= uri_string() == 'about-us' || uri_string() == MY_LANGUAGE_ABBR . '/about-us' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/about-us' ?>">About Us</a></li>
+                                        <!-- <li><a href="about-us.html">About Us</a></li> -->
                                         <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="testimonials.html">Testimonials</a></li>
+                                        <!-- <li><a href="testimonials.html">Testimonials</a></li> -->
                                         <li><a href="terms.html">Terms</a></li>
                                     </ul>
                                 </li>

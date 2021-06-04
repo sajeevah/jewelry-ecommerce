@@ -97,6 +97,10 @@ $route['(\w{2})/shopping-cart'] = "ShoppingCartPage";
 $route['shop'] = "home/shop";
 $route['(\w{2})/shop'] = "home/shop";
 
+// about us page (shopping template)
+$route['about-us'] = "AboutUs";
+$route['(\w{2})/shop'] = "AboutUs";
+
 // Textual Pages links
 $route['page/(:any)'] = "page/index/$1";
 $route['(\w{2})/page/(:any)'] = "page/index/$2";
