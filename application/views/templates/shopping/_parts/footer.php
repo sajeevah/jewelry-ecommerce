@@ -66,5 +66,7 @@
     <script src="<?= base_url('assets/shopping/js/datepicker.js') ?>"></script>
     <script src="<?= base_url('assets/shopping/js/plugins.js') ?>"></script>
     <script src="<?= base_url('assets/shopping/js/main.js') ?>"></script>
+    <script src="<?= base_url('assets/js/system.js') ?>"></script>
+    <script src="<?= base_url('templatejs/mine.js') ?>"></script>
 </body>
 </html>

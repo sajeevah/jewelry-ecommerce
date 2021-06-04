@@ -17,4 +17,4 @@ application/logs/*
 /vendor/
 
 attachments/shop_images/*
-*.temp
+*.tmp
