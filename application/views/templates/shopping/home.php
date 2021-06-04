@@ -50,119 +50,32 @@
                     </div> 
                 </div> 
                 <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <img src="<?= base_url('assets/shopping/img/product-1-720x480.jpg') ?>" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit amet.</h4>
+                    <?php
+                        $i = 0;
+                        foreach ($sliderProducts as $product) {
+                    ?>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="featured-item">
+                                <div class="thumb">
+                                    <img src="<?= base_url('attachments/shop_images/' . $product['image']) ?>" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4><?= $product['title'] ?></h4>
 
-                                <span><del><sup>$</sup>99.00 </del> <strong><sup>$</sup>79.00</strong></span>
+                                    <span><del><sup>$</sup><?= $product['old_price'] ?></del> <strong><sup>$</sup><?= $product['price'] ?></strong></span>
 
-                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
+                                    <?= $product['basic_description'] ?>
 
-                                <div class="text-button">
-                                    <a href="product-details.html">View More</a>
+                                    <div class="text-button">
+                                        <a href="<?= LANG_URL . '/' . $product['url'] ?>">View More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <img src="<?= base_url('assets/shopping/img/product-2-720x480.jpg') ?>" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit.</h4>
-
-                                <span><del><sup>$</sup>999.00 </del> <strong><sup>$</sup>779.00</strong></span>
-
-                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
-
-                                <div class="text-button">
-                                    <a href="product-details.html">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <img src="<?= base_url('assets/shopping/img/product-3-720x480.jpg') ?>" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                                <span><del><sup>$</sup>1999.00 </del> <strong><sup>$</sup>1779.00</strong></span>
-
-                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
-
-                                <div class="text-button">
-                                    <a href="product-details.html">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <img src="<?= base_url('assets/shopping/img/product-4-720x480.jpg') ?>" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                                <span><del><sup>$</sup>99.00 </del> <strong><sup>$</sup>79.00</strong></span>
-
-                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
-
-                                <div class="text-button">
-                                    <a href="product-details.html">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <img src="<?= base_url('assets/shopping/img/product-5-720x480.jpg') ?>" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit.</h4>
-
-                                <span><del><sup>$</sup>999.00 </del> <strong><sup>$</sup>779.00</strong></span>
-
-                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
-
-                                <div class="text-button">
-                                    <a href="product-details.html">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <img src="<?= base_url('assets/shopping/img/product-6-720x480.jpg') ?>" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                                <span><del><sup>$</sup>1999.00 </del> <strong><sup>$</sup>1779.00</strong></span>
-
-                                <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
-
-                                <div class="text-button">
-                                    <a href="product-details.html">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                            $i++;
+                        }
+                    ?>
                 </div>
             </div>
         </section>
