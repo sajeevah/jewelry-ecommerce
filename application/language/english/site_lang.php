@@ -31,6 +31,7 @@ $lang['more'] = 'More';
 $lang['clear_all'] = 'Clear';
 $lang['home'] = 'Home';
 $lang['contacts'] = 'Contacts';
+$lang['contact_us'] = 'Contact Us';
 $lang['cash_on_delivery'] = 'Cash on Delivery';
 $lang['first_name'] = 'Name';
 $lang['last_name'] = 'Family';

@@ -85,7 +85,8 @@
                                     </ul>
                                 </li>
 
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <!-- <li><a href="contact.html">Contact Us</a></li> -->
+                                <li<?= uri_string() == 'contacts' || uri_string() == MY_LANGUAGE_ABBR . '/contacts' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/contacts' ?>"><?= lang('contact_us') ?></a></li>
                             </ul>
                         </nav><!-- / #primary-nav -->
                     </div>

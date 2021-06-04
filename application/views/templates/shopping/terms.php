@@ -58,7 +58,7 @@
             <br>
 
             <div class="blue-button">
-                <a href="contact.html">Contact Us</a>
+                <a href="<?= LANG_URL . '/contacts' ?>"><?= lang('contact_us') ?></a>
             </div>
         </div>
     </section>

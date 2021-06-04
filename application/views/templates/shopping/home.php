@@ -8,7 +8,7 @@
                         <div class="line-dec"></div>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
                         <div class="blue-button">
-                            <a href="contact.html">Contact Us</a>
+                            <a href="<?= LANG_URL . '/contacts' ?>"><?= lang('contact_us') ?></a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                             <h4>About us</h4>
                             <p>Aenean hendrerit metus leo, quis viverra purus condimentum nec. Pellentesque a sem semper, lobortis mauris non, varius urna. Quisque sodales purus eu tellus fringilla.<br><br>Mauris sit amet quam congue, pulvinar urna et, congue diam. Suspendisse eu lorem massa. Integer sit amet posuere tellus, id efficitur leo. In hac habitasse platea dictumst. Vel sequi odit similique repudiandae ipsum iste, quidem tenetur id impedit, eaque et, aliquam quod.</p>
                             <div class="blue-button">
-                                <a href="about-us.html">Discover More</a>
+                                <a href="<?= LANG_URL . '/about-us' ?>">Discover More</a>
                             </div>
 
                             <br>
@@ -270,7 +270,7 @@
                       <!-- Modal button -->
 
                       <div class="blue-button">
-                        <a href="contact.html">Talk to us</a>
+                        <a href="<?= LANG_URL . '/contacts' ?>">Talk to us</a>
                       </div>
                 </div>
             </div>
