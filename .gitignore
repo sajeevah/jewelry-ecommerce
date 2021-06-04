@@ -17,4 +17,7 @@ application/logs/*
 /vendor/
 
 attachments/shop_images/*
+attachments/lang_flags/*
+attachments/blog_images/*
+attachments/site_logo/*
 *.tmp
