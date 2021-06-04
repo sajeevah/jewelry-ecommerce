@@ -61,9 +61,27 @@
                                     <ul class="sub-menu">
                                         <li<?= uri_string() == 'about-us' || uri_string() == MY_LANGUAGE_ABBR . '/about-us' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/about-us' ?>">About Us</a></li>
                                         <!-- <li><a href="about-us.html">About Us</a></li> -->
-                                        <li><a href="blog.html">Blog</a></li>
+                                        <!-- <li><a href="blog.html">Blog</a></li> -->
+                                        <?php
+                                            if (!empty($nonDynPages)) {
+                                                foreach ($nonDynPages as $addonPage) {
+                                                    ?>
+                                                    <li<?= uri_string() == $addonPage || uri_string() == MY_LANGUAGE_ABBR . '/' . $addonPage ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/' . $addonPage ?>"><?= mb_ucfirst(lang($addonPage)) ?></a></li>
+                                                    <?php
+                                                }
+                                            }
+                                            if (!empty($dynPages)) {
+                                                foreach ($dynPages as $addonPage) {
+                                                    ?>
+                                                    <li<?= urldecode(uri_string()) == 'page/' . $addonPage['pname'] || uri_string() == MY_LANGUAGE_ABBR . '/' . 'page/' . $addonPage['pname'] ? ' class="active"' : ''
+                                                    ?>><a href="<?= LANG_URL . '/page/' . $addonPage['pname'] ?>"><?= mb_ucfirst($addonPage['lname']) ?></a></li>
+                                                        <?php
+                                                }
+                                            }
+                                        ?>
                                         <!-- <li><a href="testimonials.html">Testimonials</a></li> -->
-                                        <li><a href="terms.html">Terms</a></li>
+                                        <!-- <li><a href="terms.html">Terms</a></li> -->
+                                        <li<?= uri_string() == 'terms' || uri_string() == MY_LANGUAGE_ABBR . '/terms' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/terms' ?>">Terms</a></li>
                                     </ul>
                                 </li>
 
