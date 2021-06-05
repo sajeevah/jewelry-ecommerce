@@ -91,83 +91,39 @@
                     </div> 
                 </div> 
                 <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <div class="thumb-img">
-                                    <img src="<?= base_url('assets/shopping/img/blog-1-720x480.jpg') ?>" alt="">
-                                </div>
+                    <?php
+                        $i = 0;
+                        foreach ($lastBlogs as $post) {
+                            ?>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="featured-item">
+                                    <div class="thumb">
+                                        <div class="thumb-img">
+                                            <img src="<?= base_url('attachments/blog_images/' . $post['image']) ?>" alt="">
+                                        </div>
 
-                                <div class="overlay-content">
-                                 <strong title="Author"><i class="fa fa-user"></i> John Doe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <strong title="Posted on"><i class="fa fa-calendar"></i> 12/06/2020 10:30</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <strong title="Views"><i class="fa fa-map-marker"></i> 115</strong>
-                                </div>
-                            </div>
+                                        <div class="overlay-content">
+                                        <strong title="Author"><i class="fa fa-user"></i> John Doe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <strong title="Posted on"><i class="fa fa-calendar"></i> <?= date('M d, Y', $post['time']) ?></strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <!-- <strong title="Views"><i class="fa fa-map-marker"></i> 115</strong> -->
+                                        </div>
+                                    </div>
 
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</h4>
+                                    <div class="down-content">
+                                        <h4><?= character_limiter($post['title'], 85) ?></h4>
 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim consectetur assumenda nam facere voluptatibus totam veritatis. </p>
+                                        <p><?= character_limiter(strip_tags($post['description']), 300) ?></p>
 
-                                <div class="text-button">
-                                    <a href="blog-details.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <div class="thumb-img">
-                                    <img src="<?= base_url('assets/shopping/img/blog-2-720x480.jpg') ?>" alt="">
-                                </div>
-
-                                <div class="overlay-content">
-                                 <strong title="Author"><i class="fa fa-user"></i> John Doe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <strong title="Posted on"><i class="fa fa-calendar"></i> 12/06/2020 10:30</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <strong title="Views"><i class="fa fa-map-marker"></i> 115</strong>
+                                        <div class="text-button">
+                                            <a href="<?= LANG_URL . '/blog/' . $post['url'] ?>"><?= lang('read_more') ?></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</h4>
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim consectetur assumenda nam facere voluptatibus totam veritatis. </p>
-
-                                <div class="text-button">
-                                    <a href="blog-details.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="featured-item">
-                            <div class="thumb">
-                                <div class="thumb-img">
-                                    <img src="<?= base_url('assets/shopping/img/blog-3-720x480.jpg') ?>" alt="">
-                                </div>
-
-                                <div class="overlay-content">
-                                 <strong title="Author"><i class="fa fa-user"></i> John Doe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <strong title="Posted on"><i class="fa fa-calendar"></i> 12/06/2020 10:30</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <strong title="Views"><i class="fa fa-map-marker"></i> 115</strong>
-                                </div>
-                            </div>
-
-                            <div class="down-content">
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</h4>
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim consectetur assumenda nam facere voluptatibus totam veritatis. </p>
-
-                                <div class="text-button">
-                                    <a href="blog-details.html">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <?php
+                            $i++;
+                        }
+                    ?>
                 </div>
             </div>
         </section>
