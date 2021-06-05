@@ -55,7 +55,7 @@ class Public_model extends CI_Model
 
     public function getLastBlogs()
     {
-        $this->db->limit(5);
+        $this->db->limit(3);
         $this->db->join('blog_translations', 'blog_translations.for_id = blog_posts.id', 'left');
         $this->db->where('blog_translations.abbr', MY_LANGUAGE_ABBR);
         $query = $this->db->select('blog_posts.id, blog_translations.title, blog_translations.description, blog_posts.url, blog_posts.time, blog_posts.image')->get('blog_posts');
