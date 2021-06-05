@@ -66,9 +66,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                           <div class="col-sm-6"><b><?= lang('num_added_to_cart') ?>:</b></div>
                           <div class="col-sm-6"><?php
                               @$result = array_count_values($_SESSION['shopping_cart']);
-                              if (isset($result[$product['id']]))
+                              $numOfproductInCart = 0;
+                              if (isset($result[$product['id']])) {
                                   echo $result[$product['id']];
-                              else
+                                  $numOfproductInCart = $result[$product['id']];
+                              } else
                                   echo 0;
                               ?></div>
                           <div class="col-sm-12 border-bottom"></div>
@@ -76,24 +78,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
                       <br/>
                       <div class="row">
                         <div class="col-sm-4">
-                          <label class="control-label">Quantity</label>
+                          <label class="control-label"><?= lang('in_stock') ?></label>
                           <div class="form-group">
-                            <input type="text" class="form-control" placeholder="1">
+                            <input type="text" class="form-control" placeholder="<?= $product['quantity'] ?>" readonly>
                           </div>
                         </div>
                       </div>
 
                       <div class="row">
-                        <div class="col-sm-3">
-                          <div class="blue-button">
-                              <a href="javascript:void(0);" data-id="<?= $product['id'] ?>" data-goto="<?= LANG_URL . '/checkout' ?>" class="add-to-cart btn-add"><?= lang('buy_now') ?></a>
+                        <?php if (($product['quantity'] - $numOfproductInCart) > 0) { ?>
+                          <div class="col-sm-3">
+                            <div class="blue-button">
+                                <a href="javascript:void(0);" data-id="<?= $product['id'] ?>" data-goto="<?= LANG_URL . '/checkout' ?>" class="add-to-cart btn-add"><?= lang('buy_now') ?></a>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="black-button">
-                              <a href="javascript:void(0);" data-id="<?= $product['id'] ?>" data-goto="<?= LANG_URL . '/' . $product['url'] ?>" class="add-to-cart btn-add"><?= lang('add_to_cart') ?></a>
+                          <div class="col-sm-5">
+                            <div class="black-button">
+                                <a href="javascript:void(0);" data-id="<?= $product['id'] ?>" data-goto="<?= LANG_URL . '/' . $product['url'] ?>" class="add-to-cart btn-add"><?= lang('add_to_cart') ?></a>
+                            </div>
                           </div>
-                        </div>
+                        <?php } else { ?>
+                            <div class="alert alert-info"><?= lang('out_of_stock_product') ?></div>
+                        <?php } ?>
                       </div>
                   </div>
                 </div>
