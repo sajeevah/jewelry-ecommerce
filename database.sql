@@ -314,7 +314,9 @@ INSERT INTO `value_store` (`id`, `thekey`, `value`) VALUES
 (31, 'outOfStock', '0'),
 (32, 'hideBuyButtonsOfOutOfStock', '0'),
 (33, 'moreInfoBtn', ''),
-(34, 'refreshAfterAddToCart', 0);
+(34, 'refreshAfterAddToCart', 0),
+(35, 'footerSocialInstagram', ''),
+(36, 'footerSocialLinkedin', '');
 
 CREATE TABLE `brands` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,

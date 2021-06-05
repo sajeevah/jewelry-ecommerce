@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="<?= MY_LANGUAGE_ABBR ?>">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>PHPJabbers.com | Free Shopping Website Template</title>
-        
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        <meta name="description" content="<?= $description ?>" />
+        <meta name="keywords" content="<?= $keywords ?>" />
+        <meta property="og:title" content="<?= $title ?>" />
+        <meta property="og:description" content="<?= $description ?>" />
+        <meta property="og:url" content="<?= LANG_URL ?>" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="<?= isset($image) && !is_null($image) ? $image : base_url('assets/img/site-overview.png') ?>" />
+        <title><?= $title ?></title>
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet" />
@@ -40,8 +45,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button id="primary-nav-button" type="button">Menu</button>
-                        <a href="index.html"><div class="logo">
-                            <img src="<?= base_url('assets/shopping/img/logo.png') ?>" alt="Venue Logo">
+                        <a href="<?= LANG_URL ?>"><div class="logo">
+                            <img src="<?= base_url('assets/shopping/img/logo.png') ?>" alt="<?= $title ?>">
                         </div></a>
                         <nav id="primary-nav" class="dropdown cf">
                             <ul class="dropdown menu">

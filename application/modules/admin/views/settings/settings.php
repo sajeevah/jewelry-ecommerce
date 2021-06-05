@@ -159,8 +159,16 @@
                         <i class="fa fa-facebook" style="position: absolute;top:10px;left:10px;"></i>
                     </div>
                     <div class="form-group" style="position: relative;">
+                        <input type="text" style="padding-left:25px;" class="form-control" name="footerSocialInstagram" value="<?= $footerSocialInstagram ?>">
+                        <i class="fa fa-instagram" style="position: absolute;top:10px;left:10px;"></i>
+                    </div>
+                    <div class="form-group" style="position: relative;">
                         <i class="fa fa-twitter" style="position: absolute;top:10px;left:10px;"></i>
                         <input type="text" style="padding-left:25px;" class="form-control" name="footerSocialTwitter" value="<?= $footerSocialTwitter ?>">
+                    </div>
+                    <div class="form-group" style="position: relative;">
+                        <i class="fa fa-linkedin" style="position: absolute;top:10px;left:10px;"></i>
+                        <input type="text" style="padding-left:25px;" class="form-control" name="footerSocialLinkedin" value="<?= $footerSocialLinkedin ?>">
                     </div>
                     <div class="form-group" style="position: relative;">
                         <i class="fa fa-google-plus" style="position: absolute;top:10px;left:10px;"></i>

@@ -108,7 +108,9 @@ class Settings extends ADMIN_Controller
         }
         if (isset($_POST['footerSocial'])) {
             $this->Home_admin_model->setValueStore('footerSocialFacebook', $_POST['footerSocialFacebook']);
+            $this->Home_admin_model->setValueStore('footerSocialInstagram', $_POST['footerSocialInstagram']);
             $this->Home_admin_model->setValueStore('footerSocialTwitter', $_POST['footerSocialTwitter']);
+            $this->Home_admin_model->setValueStore('footerSocialLinkedin', $_POST['footerSocialLinkedin']);
             $this->Home_admin_model->setValueStore('footerSocialGooglePlus', $_POST['footerSocialGooglePlus']);
             $this->Home_admin_model->setValueStore('footerSocialPinterest', $_POST['footerSocialPinterest']);
             $this->Home_admin_model->setValueStore('footerSocialYoutube', $_POST['footerSocialYoutube']);
