@@ -58,6 +58,31 @@
     <div class="sub-footer">
         <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
     </div>
+    <?php if ($this->session->flashdata('emailAdded')) { ?>
+        <script>
+            $(document).ready(function () {
+                ShowNotificator('alert-info', '<?= lang('email_added') ?>');
+            });
+        </script>
+            <?php
+        }
+        echo $addJs;
+        if ($this->session->flashdata('userError')) {
+            if (is_array($this->session->flashdata('userError'))) {
+                $usr_err = implode(' ', $this->session->flashdata('userError'));
+            } else {
+                $usr_err = $this->session->flashdata('userError');
+            }
+            ?>
+            <script>
+                $(document).ready(function () {
+                    ShowNotificator('alert-danger', '<?= $usr_err ?>');
+                });
+            </script>
+            <?php
+        }
+    ?>
+<div id="notificator" class="alert"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
     <script>window.jQuery || document.write('<script src="<?= base_url('assets/shopping/js/vendor/jquery-1.11.2.min.js') ?>"><\/script>')</script>
 
@@ -66,7 +91,15 @@
     <script src="<?= base_url('assets/shopping/js/datepicker.js') ?>"></script>
     <script src="<?= base_url('assets/shopping/js/plugins.js') ?>"></script>
     <script src="<?= base_url('assets/shopping/js/main.js') ?>"></script>
+    <script>
+        var variable = {
+            clearShoppingCartUrl: "<?= base_url('clearShoppingCart') ?>",
+            manageShoppingCartUrl: "<?= base_url('manageShoppingCart') ?>",
+            discountCodeChecker: "<?= base_url('discountCodeChecker') ?>"
+        };
+    </script>
     <script src="<?= base_url('assets/js/system.js') ?>"></script>
     <script src="<?= base_url('templatejs/mine.js') ?>"></script>
+    
 </body>
 </html>

@@ -284,6 +284,23 @@ section {
   color: #4883ff;
 }
 
+.black-button a {
+  display: inline-block;
+  background-color: #6c757d;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 16px;
+  text-decoration: none;
+  border: 2px solid #6c757d;
+  transition: all 0.5s;
+}
+
+.black-button a:hover {
+  background-color: transparent;
+  color: #6c757d;
+}
+
 
 /* Header Style */
 
