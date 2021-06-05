@@ -59,7 +59,13 @@ class Home extends MY_Controller
         $data['brands'] = $this->Brands_model->getBrands();
         $data['showOutOfStock'] = $this->Home_admin_model->getValueStore('outOfStock');
         $data['shippingOrder'] = $this->Home_admin_model->getValueStore('shippingOrder');
-        $data['products'] = $this->Public_model->getProducts($this->num_rows, $page, $_GET);
+        $template = $this->config->item('template');
+        // FIXME: check logic deeply and refactor
+        if (isset($template) && $template === 'shopping') {
+            $data['products'] = $this->Public_model->getAllProducts($this->num_rows, $page, $_GET);
+        } else {
+            $data['products'] = $this->Public_model->getProducts($this->num_rows, $page, $_GET);
+        }
         $rowscount = $this->Public_model->productsCount($_GET);
         $data['links_pagination'] = pagination('home', $rowscount, $this->num_rows);
         $this->render('shop', $head, $data);

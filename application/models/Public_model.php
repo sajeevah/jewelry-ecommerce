@@ -109,6 +109,24 @@ class Public_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getAllProducts($limit = null, $start = null, $big_get, $vendor_id = false)
+    {
+        if ($limit !== null && $start !== null) {
+            $this->db->limit($limit, $start);
+        }
+        if (!empty($big_get) && isset($big_get['category'])) {
+            $this->getFilter($big_get);
+        }
+        $this->db->select('vendors.url as vendor_url, products.id,products.image, products.quantity, products_translations.title, products_translations.description, products_translations.price, products_translations.old_price, products.url');
+        $this->db->join('products_translations', 'products_translations.for_id = products.id', 'left');
+        $this->db->join('vendors', 'vendors.id = products.vendor_id', 'left');
+        $this->db->where('products_translations.abbr', MY_LANGUAGE_ABBR);
+        $this->db->where('visibility', 1);
+        $this->db->order_by('position', 'asc');
+        $query = $this->db->get('products');
+        return $query->result_array();
+    }
+
     public function getOneLanguage($myLang)
     {
         $this->db->select('*');
