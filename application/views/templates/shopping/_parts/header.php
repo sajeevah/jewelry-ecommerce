@@ -54,7 +54,7 @@
                                 <!-- <li><a href="checkout.html">Checkout</a></li> -->
                                 <li<?= uri_string() == 'checkout' || uri_string() == MY_LANGUAGE_ABBR . '/checkout' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/checkout' ?>"><?= lang('checkout') ?></a></li>
 
-                                <li<?= uri_string() == 'shopping-cart' || uri_string() == MY_LANGUAGE_ABBR . '/shopping-cart' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/shopping-cart' ?>"><?= lang('shopping_cart') ?></a></li>
+                                <li<?= uri_string() == 'shopping-cart' || uri_string() == MY_LANGUAGE_ABBR . '/shopping-cart' ? ' class="active"' : '' ?>><a href="<?= LANG_URL . '/shopping-cart' ?>"><?= lang('shopping_cart') ?><?php if($cartItems['array'] != 0) { ?><sup><span class="badge"><?= $cartItems['array'] == 0 ? 0 : $sumOfItems ?></span></sup><?php } ?></a></li>
 
                                 <li>
                                     <a href="#">About</a>
