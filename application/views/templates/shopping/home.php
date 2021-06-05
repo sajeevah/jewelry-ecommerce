@@ -103,7 +103,7 @@
                                         </div>
 
                                         <div class="overlay-content">
-                                        <strong title="Author"><i class="fa fa-user"></i> John Doe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <strong title="Author"><i class="fa fa-user"></i> Chloe</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                         <strong title="Posted on"><i class="fa fa-calendar"></i> <?= date('M d, Y', $post['time']) ?></strong> &nbsp;&nbsp;&nbsp;&nbsp;
                                         <!-- <strong title="Views"><i class="fa fa-map-marker"></i> 115</strong> -->
                                         </div>
